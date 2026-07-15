@@ -1,6 +1,6 @@
 <?php 
 
-require_once "header.php"; 
+require_once "includes/header.php"; 
 
 ?>
 
@@ -53,10 +53,10 @@ require_once "header.php";
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="register.php">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

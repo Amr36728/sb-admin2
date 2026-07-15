@@ -1,6 +1,6 @@
 <?php 
 
-require_once "header.php"; 
+require_once "includes/header.php"; 
 
 ?>
     <title>SB Admin 2 - Forgot Password</title>

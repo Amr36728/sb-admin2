@@ -1,6 +1,23 @@
-<?php 
+<?php
 
-require_once "header.php"; 
+require_once "includes/header.php";
+require_once "db_connection.php";
+
+// $Email = $_POST['email'] ;
+// $Password = $_POST['password'] ;
+// $PasswordConfirmation = $_POST['confirm_password'] ; 
+// $FirstName = $_POST['first_name'] ; 
+// $LastName = $_POST['last_name'] ;
+
+if (isset($_POST['submit'])) {
+    if ($_POST['password'] == $_POST['confirm_password']) {
+        $sql = "insert into users (email , password , first_name , last_name) values (? , ? , ? ,?)";
+        $dbconnect->execute_query($sql, [$_POST['email'], $_POST['password'], $_POST['first_name'], $_POST['last_name']]);
+    } else {
+        header("Location:register.php");
+    }
+}
+
 
 ?>
 
@@ -18,30 +35,33 @@ require_once "header.php";
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" action="" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                            placeholder="First Name" name="first_name">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                            placeholder="Last Name" name="last_name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" name="email">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="Password" name="password">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            id="exampleRepeatPassword" placeholder="Repeat Password" name="confirm_password">
                                     </div>
+                                </div>
+                                <div>
+                                    <input type="submit" name="submit" value="submit">
                                 </div>
                                 <a href="login.html" class="btn btn-primary btn-user btn-block">
                                     Register Account
